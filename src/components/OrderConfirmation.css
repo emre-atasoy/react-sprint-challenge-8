@@ -1,0 +1,43 @@
+.page-styles {
+  background-color: #c92a1c;
+  color: white;              
+  text-align: center;      
+  display: flex;
+  flex-direction: column;
+  align-items: center;       
+  justify-content: center;   
+  min-height: 100vh;        
+  padding: 20px;             
+  box-sizing: border-box;
+}
+
+.top-title {
+  font-size: 60px; 
+  margin-bottom: 100px;
+  
+}
+
+.main-title {
+  font-size: 90px;
+  margin: 1rem 0;
+  font-weight: bold;
+  font-family: "Roboto Condensed", sans-serif;
+}
+
+.subtitle {
+  font-size: 35px;
+  margin-bottom: 1rem;
+}
+
+.border {
+  border-radius: 5px;
+  text-align: center;
+  padding: 10px 15px;
+  margin: 10px 0;
+  width: 350px; 
+}
+
+.top-button:hover {
+  background-color: #ffe5e5;
+}
+

@@ -2,6 +2,8 @@ import HomePage from "./components/HomePage"
 import OrderForm from "./components/OrderForm"
 import OrderConfirmation from "./components/OrderConfirmation"
 import { useState } from "react"
+import { ToastContainer } from "react-toastify"
+import "react-toastify/dist/ReactToastify.css"
 
 function App() {
   const [page,setPage] = useState("home");
@@ -30,6 +32,18 @@ function App() {
     {page === "confirmation" && (
       <OrderConfirmation goHome={goHome} orderData={orderData} />
     )}
+
+     <ToastContainer
+      position="bottom-center"
+      autoClose={3000}
+      hideProgressBar={false}
+      newestOnTop={false}
+      closeOnClick
+      rtl={false}
+      pauseOnFocusLoss
+      draggable
+      pauseOnHover
+    />
   
   </>
 );

@@ -1,10 +1,165 @@
 header {
-  background-color:#CE2829;
+  background-color: #c92a1c;
   display: flex;
   flex-direction: column;
   align-items: center;
+  height: 80px;
 }
-.title {
-    color: white;
+
+.top-titlee {
+  font-size: 40px;
+  font-weight: 400;
+  line-height: 40px;
+  font-family: Londrina Solid;
+  color: white;
+  margin-top: 20px;
 }
+/* En üst Kısım */
+
+
+/*Açıklama bitene kadar olan kısım*/
+.information-absolute {
+  background: #faf7f2;
+  text-align: center;
+}
+
+.information-absolute img {
+  width: 30%;
+  height: auto;
+  display: block;
+  margin: 0 auto 10px; 
+}
+
+.button-text-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.button-text-row button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #5F5F5F;
+  font-size: 1rem;
+}
+
+.siparis-yazi {
+  color: red;
+  font-size: 1rem;
+  padding-right: 314px;
+}
+
+.aciklama {
+  font-family: "Barlow";
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: justify;
+  line-height: 1.5;
+  color: #333;
+}
+
+.for-bold {
+  font-weight: bold;
+  font-size: 25px;
+}
+
+.info {
+  font-family: "Barlow";
+  padding-top:50px;
+  font-size: 23px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.right-info {
+  font-size: 18px;
+  display: flex;
+  gap: 60px;
+  align-items: center;
+}
+
+/* ************************************ */
+
+.alt-page {
+  max-width: 635px;
+  margin: 2rem auto;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+
+form {
+  max-width: 600px;      
+  margin: 40px auto;    
+  padding: 20px;
+  background-color: #fff;
+}
+
+
+.boyut-secimi, .hamur-secimi {
+  display: inline-block;
+  vertical-align: top;
+  margin-right: 152px; /* İkisi arasında boşluk */
+}
+
+.checkbox-container {
+  display: grid;
+  grid-template-columns: repeat(3, max-content);
+  column-gap: 40px;
+  row-gap: 6px;
+  max-height: calc(10 * 32px);
+  
+}
+
+.adet-kontrol {
+  display: flex;
+  align-items: center;
+}
+
+.adet-kontrol p {
+  margin: 0;
+  min-width: 40px;          
+  text-align: center;
+  border: 1px solid white;
+  padding: 6px 12px;        
+  box-sizing: border-box;   
+  font-weight: 500;         
+  background-color: #fff;  
+  border-radius: 5px; 
+  background-color: #faf7f2;
+  font-family: "Barlow";
+ 
+}
+
+.adet-kontrol button {
+  background-color: #faf7f2;
+  border: white;
+  padding: 6px 12px;
+  cursor: pointer;
+  font-weight: 500;
+  color: black;
+  font-family: "Barlow";
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
