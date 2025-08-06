@@ -4,17 +4,38 @@ import { Form, FormGroup, Label, Input, Button } from 'reactstrap';
 import { toast } from "react-toastify";
 import Footer from "./Footer";
 
+import Checkbox from "@mui/material/Checkbox";
+import { orange,grey } from "@mui/material/colors";
+import { FormControlLabel, Typography } from "@mui/material";
+
+
+
+
 
 function OrderForm({ submitOrder,goHome }) {
 
+const label = { inputProps: { 'aria-label': 'Custom checkbox' } };
+
+
+
+
   const [seciliMalzemeler, setSeciliMalzemeler] = useState([]);
   const [name, setName] = useState('');
-  const fiyatPerMalzeme = 5;
   const [adet, setAdet] = useState(1);
-  const [boyut, setBoyut] = useState("Küçük");
-  const [hamur, setHamur] = useState("İnce");
+  const [boyut, setBoyut] = useState("S");
+  const [hamur, setHamur] = useState("Hamur Kalınlığı Seç");
+  
+  const fiyatPerMalzeme = 5;
   const secimlerTutari = seciliMalzemeler.length * fiyatPerMalzeme;
-  const toplamTutar = adet * (85 + secimlerTutari);
+  const toplamTutar = adet * (85.50 + secimlerTutari);
+  
+  
+
+
+/* Seçilen Radio Buttonları */
+
+  const [selected, setSelected] = useState(null);
+  const buttons = ["S", "M", "L"];
 
   const malzemeler = [
     'Pepperoni',
@@ -28,7 +49,7 @@ function OrderForm({ submitOrder,goHome }) {
     'Jalepeno',
     'Sarımsak',
     'Biber',
-    'Sucuk',
+    'Peynir',
     'Ananas',
     "Kabak",
   ];
@@ -58,6 +79,10 @@ function OrderForm({ submitOrder,goHome }) {
   };
 
   return (
+
+    
+
+    
     <div>
       <header className="header">
         <h2 className="top-titlee">Teknolojik Yemekler</h2>
@@ -69,22 +94,29 @@ function OrderForm({ submitOrder,goHome }) {
     src="/assets/iteration-2-images/pictures/food-2.png" 
     alt="absolute-acılı-pizza"
   />
+<div className="button-text-row" style={{ display: "inline" }}>
+  <button
+    onClick={goHome}
+    style={{
+      background: 'none',
+      border: 'none',
+      cursor: "pointer",
+      color: "#5F5F5F",
+      padding: 0,
+      fontSize: "inherit",
+      display: "inline",
+    }}
+  >
+    Anasayfa
+  </button>{" "}
+  - Seçenekler -{" "}
+  <span style={{ color: "red" }}>Sipariş Oluştur</span>
+</div>
 
-  <div className="button-text-row info">
-    <button
-      onClick={goHome}
-      style={{
-        background: 'none',
-        border: 'none',
-        cursor: "pointer",
-        color: "#5F5F5F",
-      }}
-    >
-      Anasayfa -</button>
-    <span className="siparis-yazi">Seçenekler -Sipariş Oluştur</span>
-  </div>
 
-  <h3 className="info">Position Absolute Acı Pizza</h3>
+
+
+  <h3 style={{fontWeight:"bold"}}className="info">Position Absolute Acı Pizza</h3>
   
   <div className="info">
   <span className="for-bold">85.50₺</span>
@@ -93,7 +125,7 @@ function OrderForm({ submitOrder,goHome }) {
     <span>(200)</span>
   </div>
 </div>
-
+<br />
   <p className="aciklama">
     Frontend Dev olarak hala position:absolute kullanıyorsan bu çok acı
     pizza tam sana göre. Pizza; domates, peynir ve genellikle çeşitli
@@ -107,6 +139,7 @@ function OrderForm({ submitOrder,goHome }) {
 
       
       <Form>
+       
         <div className="secim-grubu">
 
           <div className="boyut-secimi">
@@ -114,46 +147,30 @@ function OrderForm({ submitOrder,goHome }) {
           {/* Boyut seçimi */}
           <FormGroup tag="fieldset">
             <legend>Boyut Seç</legend>
-            <FormGroup check>
-              <Input 
-              type="radio" 
-              name="secenek" 
-              id="option1"
-              value="Küçük"
-              checked={boyut === "Küçük"}
-              onChange={(e) => setBoyut(e.target.value)}/>
-              <Label check htmlFor="option1">
-                Küçük
-              </Label>
-            </FormGroup>
-            <br />
-            <FormGroup check>
-              <Input 
-              type="radio" 
-              name="secenek" 
-              id="option2" 
-              value="Orta"
-              checked={boyut === "Orta"}
-              onChange={(e) => setBoyut(e.target.value)}/>
-              <Label check htmlFor="option2">
-                Orta
-              </Label>
-            </FormGroup>
-            <br />
-            <FormGroup check>
-              <Input 
-              type="radio" 
-              name="secenek" 
-              id="option3"
-              value="Büyük"
-              checked={boyut === "Büyük"}
-              onChange={(e) => setBoyut(e.target.value)}/> 
-              <Label check htmlFor="option3">
-                Büyük
-              </Label>
-            </FormGroup>
-          </FormGroup>
-          </div>
+            
+                   <div>
+      {buttons.map((btn, idx) => (
+  <button
+    key={idx}
+    type="button"
+    onClick={() => setBoyut(btn)}
+    style={{
+      marginRight: 21,
+      padding: "14px 19px",
+      backgroundColor: boyut === btn ? "orange" : "#faf7f2",
+      color: "black",
+      border: "none",
+      borderRadius: 999,
+      cursor: "pointer",
+      
+    }}
+  >
+    {btn}
+  </button>
+      ))}
+    </div>
+</FormGroup>
+   </div>      
 
           {/* Hamur seçimi */}
           <FormGroup className="hamur-secimi" >
@@ -162,40 +179,79 @@ function OrderForm({ submitOrder,goHome }) {
               type="select"
               name="select"
               id="selectInput"
-              style={{ width: '150px' }}
+              style={{ paddingLeft:"15px", width: '220px', backgroundColor:"#faf7f2" }}
               value={hamur}
               onChange={(e) => setHamur(e.target.value)}
             >
+              <option>--Hamur Kalınlığı Seç--</option>
               <option>İnce</option>
               <option>Normal</option>
               <option>Kalın</option>
             </Input>
           </FormGroup>
+            
 
+
+         
           {/* Ek Malzemeler */}
-          <FormGroup>
-            <Label style={{ fontWeight: "bold" }}>Ek Malzemeler</Label>
-            <p style={{ color: "gray" }}>En fazla 10 malzeme seçebilirsiniz. 5₺</p>
-            <div className="checkbox-container">
-            {malzemeler.map((malzeme, index) => (
-              <FormGroup check key={index}>
-                <Input
-                  type="checkbox"
-                  value={malzeme}
-                  id={`checkbox-${index}`}
-                  checked={seciliMalzemeler.includes(malzeme)}
-                  onChange={handleCheckBoxChange}
-                />
-                <Label check htmlFor={`checkbox-${index}`}>
-                  {malzeme}
-                </Label>
-              </FormGroup>
-            ))}
-            </div>
-          </FormGroup>
+          <FormGroup className="ek-malzeme"> 
+  <Typography
+    variant="h6"
+    fontWeight="bold"
+    sx={{ marginBottom: "20px",
+      fontFamily:"Barlow",
+     }}
+  >
+    Ek Malzemeler
+  </Typography>
 
-          <FormGroup>
-            <Label htmlFor="isimInput">İsim</Label>
+  <Typography
+    variant="body2"
+    color="gray"
+    sx={{ marginBottom: "30px" }} 
+  >
+    En fazla 10 malzeme seçebilirsiniz. 5₺
+  </Typography>
+
+  <div className="checkbox-container">
+    {malzemeler.map((malzeme, index) => (
+      <FormControlLabel
+        key={index}
+        sx={{ marginBottom: "12px" }} 
+        control={
+          <Checkbox
+            value={malzeme}
+            checked={seciliMalzemeler.includes(malzeme)}
+            onChange={handleCheckBoxChange}
+            sx={{
+              transform: 'scale(1.7)',
+
+              '& .MuiSvgIcon-root': {
+                color: '#faf7f2',
+                backgroundColor: '#faf7f2',
+                borderRadius: '4px',
+                marginRight: '15px',
+                alignItems: 'center',
+                fontFamily:"Barlow",
+              },
+
+              '&.Mui-checked .MuiSvgIcon-root': {
+                color: 'white',
+                backgroundColor: orange[600],
+                borderRadius: '4px',
+                
+              },
+            }}
+          />
+        }
+        label={malzeme}
+      />
+    ))}
+  </div>
+</FormGroup>
+           
+          <FormGroup className="mobil-isim-aciklama">
+            <Label  style={{fontFamily:"Barlow"}}htmlFor="isimInput">İsim</Label>
             <Input
               type="text"
               name="isim"
@@ -203,62 +259,77 @@ function OrderForm({ submitOrder,goHome }) {
               placeholder="İsminizi girin"
               value={name}
               onChange={(e) => setName(e.target.value)}
+              style={{
+                width: "600px",
+                backgroundColor:'#faf7f2',
+              }}
             />
           </FormGroup>
 
-          <FormGroup>
-            <Label htmlFor="textareaInput">Sipariş Notu</Label>
+          <FormGroup className="mobil-isim-aciklama">
+            <Label style={{fontFamily:"Barlow"}} htmlFor="textareaInput">Sipariş Notu</Label>
             <Input
               rows="1"
               type="textarea"
               name="text"
               id="textareaInput"
               placeholder="Siparişe eklemek istediğin bir not var mı?"
-              style={{ width: '560px' }}
+              style={{ width: '600px',
+                backgroundColor:'#faf7f2',
+               }}
             />
           </FormGroup>
 
           <div style={{ width: "100%", borderBottom: "1px solid #ccc", margin: "40px auto" }}></div>
 
-          
-            <div className="adet-kontrol">
-          <Button type="button" onClick={decrease}>
-            -
-          </Button>
-          <p>{adet}</p>
-          <Button type="button" onClick={increase}>
-            +
-          </Button>
-          </div>
-            
-          {/* Gönder butonu */}
-          <div >
-            Seçimler: {seciliMalzemeler.length * fiyatPerMalzeme}₺ Toplam:{' '}
-            {adet * (85 + seciliMalzemeler.length * fiyatPerMalzeme)}₺
-          </div>
-          <FormGroup check>
-  <Button
-    type="button"
-    onClick={() => {
-      const order = {
-        seciliMalzemeler,
-        boyut,
-        secimlerTutari,
-        toplamTutar,
-        
+          <div className="order-controls-container">
+  <div className="adet-kontrol">
+    <Button type="button" onClick={decrease}>-</Button>
+    <p>{adet}</p>
+    <Button type="button" onClick={increase}>+</Button>
+  </div>
 
-      };
-      if (!name) {
-        toast.error("Lütfen isminizi girin.");
-        return;
-      }
+  <div className="order-summary-vertical">
+    <div style={{
+      border:"1px solid white",
+      backgroundColor:'#faf7f2',
+      padding:"20px 50px",
+      fontFamily:"Barlow"
+    }}>
+    <h6>Sipariş Toplamı</h6>
+    <br />
+    <div style={{color:"gray",}}>Seçimler<span style={{marginLeft:"120px"}}/>{seciliMalzemeler.length * fiyatPerMalzeme}₺</div>
+    <br />
+    <div style={{
+      color:"red"
+    }}>Toplam <span style={{marginLeft:"120px"}}/> {toplamTutar}₺</div>
+    </div>
+    <Button
+      
+      type="button"
+      onClick={() => {
+        if (!name || name.trim().length < 3 ) {
+          toast.error("İsim en az 3 karakter olmalı.");
+          return;
+        }
+        const order = {
+          seciliMalzemeler,
+          boyut,
+          hamur,
+          secimlerTutari,
+          toplamTutar,
+          adet,
+          name,
+          boyut,
+        };
+        submitOrder(order);
+      }}
+    >
+      SİPARİŞ VER
+    </Button>
+  </div>
+</div>
 
-      submitOrder(order);
-    }}
-  >
-    Gönder
-  </Button>
-</FormGroup>
         </div>
       </Form>
       <Footer/>

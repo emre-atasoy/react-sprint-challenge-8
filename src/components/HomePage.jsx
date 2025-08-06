@@ -25,9 +25,8 @@ function HomePage({ onStart }) {
       <header className="top">
         <h2 className="top-title">Teknolojik Yemekler</h2>
         <p className="subtitle">fırsatı kaçırma</p>
-        <h2 className="main-title">
-          KOD ACIKTIRIR
-          <br />
+        <h2 class="main-title">
+          KOD ACIKTIRIR<br />
           PIZZA, DOYURUR
         </h2>
         <button className="top-button" onClick={onStart}>

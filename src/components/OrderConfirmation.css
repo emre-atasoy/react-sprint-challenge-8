@@ -14,30 +14,32 @@
 .top-title {
   font-size: 60px; 
   margin-bottom: 100px;
-  
+  margin-top: 30px;
 }
 
 .main-title {
   font-size: 90px;
   margin: 1rem 0;
-  font-weight: bold;
-  font-family: "Roboto Condensed", sans-serif;
+  font-family: "Roboto Condensed";
 }
-
 .subtitle {
   font-size: 35px;
-  margin-bottom: 1rem;
+  margin-bottom: 1px;
 }
 
 .border {
   border-radius: 5px;
   text-align: center;
-  padding: 10px 15px;
-  margin: 10px 0;
+  padding: 40px 15px;
+  margin: 30px;
   width: 350px; 
+  font-weight: bold;
 }
 
 .top-button:hover {
   background-color: #ffe5e5;
 }
 
+.p-tags{
+  text-align: start;
+}

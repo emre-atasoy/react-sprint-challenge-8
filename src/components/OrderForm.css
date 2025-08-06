@@ -13,6 +13,7 @@ header {
   font-family: Londrina Solid;
   color: white;
   margin-top: 20px;
+  padding-left: 40px;
 }
 /* En üst Kısım */
 
@@ -21,6 +22,7 @@ header {
 .information-absolute {
   background: #faf7f2;
   text-align: center;
+  padding-left: 40px;
 }
 
 .information-absolute img {
@@ -47,7 +49,6 @@ header {
 }
 
 .siparis-yazi {
-  color: red;
   font-size: 1rem;
   padding-right: 314px;
 }
@@ -69,12 +70,13 @@ header {
 .info {
   font-family: "Barlow";
   padding-top:50px;
-  font-size: 23px;
+  font-size: 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   max-width: 600px;
   margin: 0 auto;
+  font-weight: b;
 }
 
 .right-info {
@@ -105,8 +107,14 @@ form {
 .boyut-secimi, .hamur-secimi {
   display: inline-block;
   vertical-align: top;
-  margin-right: 152px; /* İkisi arasında boşluk */
+  
 }
+.boyut-secimi{
+  margin-right: 60px;
+}
+
+
+
 
 .checkbox-container {
   display: grid;
@@ -120,6 +128,7 @@ form {
 .adet-kontrol {
   display: flex;
   align-items: center;
+  margin-bottom: 180px;
 }
 
 .adet-kontrol p {
@@ -148,6 +157,9 @@ form {
 }
 
 
+.button-text-row{
+
+}
 
 
 
@@ -163,3 +175,156 @@ form {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+.order-controls-container {
+  display: flex;
+  align-items: center;
+  gap: 250px;
+  margin-top: 10px;
+}
+
+.order-summary-vertical {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  
+}
+
+.order-summary-vertical > div {
+  font-weight: bold;
+  font-size: 14px;
+  text-align:start;
+}
+
+.order-summary-vertical button {
+  font-size: 12px;
+  font-weight: 600;
+  font-family: Barlow;
+  cursor: pointer;
+  background-color: #fdc913;
+  border: none;
+  border-radius: 5px;
+  padding: 15px 100px;
+  color: #292929;
+
+}
+.button-text-row {
+  font-size: 16px;
+  padding-right: 324px;
+  color: gray;
+}
+
+@media (max-width: 768px) {
+  form {
+    padding: 0 10px !important;
+    max-width: 100% !important;
+  }
+
+  input[type="text"],
+  textarea,
+  select {
+    width: 100% !important;
+    font-size: 16px;
+    padding: 10px;
+  }
+
+  .boyut-secimi button {
+    margin-right: 10px !important;
+    padding: 10px 14px !important;
+    font-size: 14px !important;
+  }
+  .boyut-secimi{
+    padding-left: 30px;
+  }
+  .ek-malzeme{
+    padding-left: 30px;
+  }
+  .mobil-isim-aciklama{
+    padding-left: 20px;
+  }
+
+  .checkbox-container {
+    display: flex;
+    flex-direction: row;
+    max-width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px 15px;
+  }
+
+  #textareaInput {
+    width: 100% !important;
+    min-height: 80px;
+  }
+
+  #isimInput {
+    width: 100% !important;
+  }
+
+  .adet-kontrol button {
+    padding: 6px 12px !important;
+    font-size: 18px !important;
+  }
+
+  .adet-kontrol p {
+    margin: 0 10px;
+    font-size: 18px !important;
+  }
+
+  .order-summary-vertical {
+    width: 100% !important;
+    margin-top: 20px;
+    padding: 15px !important;
+    padding-right: 50px;
+    
+  }
+
+  .order-summary-vertical button {
+    width: 100% !important;
+    font-size: 18px !important;
+  }
+
+  .secim-grubu {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .information-absolute {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    padding: 0 10px;
+  }
+
+  .information-absolute img {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+  }
+
+  label, legend {
+    font-size: 16px !important;
+  }
+
+  .button-text-row {
+    font-size: 14px;
+    text-align: center;
+  }
+  .info{
+    padding-right: 300px;
+  }
+  
+}
