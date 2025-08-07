@@ -55,6 +55,14 @@
   padding: 15px 50px;
   color: #292929;
   margin: 40px;
+  transition: all 1s ease;
+}
+.top-button:focus,
+.top-button:hover {
+  background-color: black;
+  color: red;
+  outline: none;
+  transform: scale(1.03);
 }
 
 .nav-categories {
@@ -115,6 +123,14 @@
   padding: 14px 25px;
   border: none;
   cursor: pointer;
+  transition: all 1s ease;
+}
+.orta-menu-button:focus,
+.orta-menu-button:hover {
+  background-color: black;
+  color: red;
+  outline: none;
+  transform: scale(1.03);
 }
 
 .orta-menuured-button:hover {

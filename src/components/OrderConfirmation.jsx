@@ -3,7 +3,7 @@ import "./OrderConfirmation.css"
 export default function OrderConfirmation ({goHome,orderData}) {
   
   return (
-   <div className="page-styles">
+   <div data-cy="confirmation" className="page-styles">
       <h2 className="top-title">Teknolojik Yemekler</h2>
       <p className="subtitle">lezzetin yolda</p>
       <h2 className="main-title">SİPARİŞ ALINDI</h2>

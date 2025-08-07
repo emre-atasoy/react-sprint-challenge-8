@@ -3,9 +3,8 @@ import "./OrderForm.css"
 import { Form, FormGroup, Label, Input, Button } from 'reactstrap';
 import { toast } from "react-toastify";
 import Footer from "./Footer";
-
 import Checkbox from "@mui/material/Checkbox";
-import { orange,grey } from "@mui/material/colors";
+import { orange} from "@mui/material/colors";
 import { FormControlLabel, Typography } from "@mui/material";
 
 
@@ -15,10 +14,6 @@ import { FormControlLabel, Typography } from "@mui/material";
 function OrderForm({ submitOrder,goHome }) {
 
 const label = { inputProps: { 'aria-label': 'Custom checkbox' } };
-
-
-
-
   const [seciliMalzemeler, setSeciliMalzemeler] = useState([]);
   const [name, setName] = useState('');
   const [adet, setAdet] = useState(1);
@@ -29,12 +24,7 @@ const label = { inputProps: { 'aria-label': 'Custom checkbox' } };
   const secimlerTutari = seciliMalzemeler.length * fiyatPerMalzeme;
   const toplamTutar = adet * (85.50 + secimlerTutari);
   
-  
-
-
 /* Seçilen Radio Buttonları */
-
-  const [selected, setSelected] = useState(null);
   const buttons = ["S", "M", "L"];
 
   const malzemeler = [
@@ -68,7 +58,7 @@ const label = { inputProps: { 'aria-label': 'Custom checkbox' } };
     const { value, checked } = e.target;
 
     if (checked) {
-      if (seciliMalzemeler.length >= 10) {
+      if (seciliMalzemeler.length >= 10 ) {
         toast.warn("En fazla 10 malzeme seçebilirsiniz.");
         return;
       }
@@ -151,6 +141,7 @@ const label = { inputProps: { 'aria-label': 'Custom checkbox' } };
                    <div>
       {buttons.map((btn, idx) => (
   <button
+    data-cy={`boyut-button-${btn}`}
     key={idx}
     type="button"
     onClick={() => setBoyut(btn)}
@@ -216,10 +207,12 @@ const label = { inputProps: { 'aria-label': 'Custom checkbox' } };
   <div className="checkbox-container">
     {malzemeler.map((malzeme, index) => (
       <FormControlLabel
+       
         key={index}
         sx={{ marginBottom: "12px" }} 
         control={
           <Checkbox
+           data-cy={`checkbox-${malzeme.toLowerCase().replace(/ /g, "-")}`}
             value={malzeme}
             checked={seciliMalzemeler.includes(malzeme)}
             onChange={handleCheckBoxChange}
@@ -253,6 +246,7 @@ const label = { inputProps: { 'aria-label': 'Custom checkbox' } };
           <FormGroup className="mobil-isim-aciklama">
             <Label  style={{fontFamily:"Barlow"}}htmlFor="isimInput">İsim</Label>
             <Input
+              data-cy="input-name"
               type="text"
               name="isim"
               id="isimInput"
@@ -305,7 +299,7 @@ const label = { inputProps: { 'aria-label': 'Custom checkbox' } };
     }}>Toplam <span style={{marginLeft:"120px"}}/> {toplamTutar}₺</div>
     </div>
     <Button
-      
+      data-cy="submit-button"
       type="button"
       onClick={() => {
         if (!name || name.trim().length < 3 ) {
@@ -320,7 +314,6 @@ const label = { inputProps: { 'aria-label': 'Custom checkbox' } };
           toplamTutar,
           adet,
           name,
-          boyut,
         };
         submitOrder(order);
       }}

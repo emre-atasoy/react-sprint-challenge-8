@@ -4,6 +4,7 @@ import OrderConfirmation from "./components/OrderConfirmation"
 import { useState } from "react"
 import { ToastContainer } from "react-toastify"
 import "react-toastify/dist/ReactToastify.css"
+import axios from "axios";
 
 function App() {
   const [page,setPage] = useState("home");
@@ -13,10 +14,21 @@ function App() {
     setPage("order");
   };
 
-  const submitOrder = (data) => {
-    setOrderData(data);
-    setPage("confirmation")
-  } 
+  const submitOrder = async (data) => {
+  try {
+    const response = await axios.post("https://reqres.in/api/pizza", data, {
+      headers: {
+        "x-api-key": "reqres-free-v1"
+      }
+    });
+    console.log("Sipariş yanıtı:", response.data);
+    setOrderData(response.data);
+    setPage("confirmation");
+  } catch (error) {
+    console.error("Sipariş gönderilirken hata:", error);
+    toast.error("Sipariş gönderilemedi. Lütfen internet bağlantınızı kontrol edin.");
+  }
+};
 
   const goHome = () => {
     setPage("home");
@@ -35,7 +47,7 @@ function App() {
 
      <ToastContainer
       position="bottom-center"
-      autoClose={3000}
+      autoClose={10000}
       hideProgressBar={false}
       newestOnTop={false}
       closeOnClick

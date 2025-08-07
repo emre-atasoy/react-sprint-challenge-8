@@ -22,19 +22,19 @@ function HomePage({ onStart }) {
 
   return (
     <div>
-      <header className="top">
+      <header className="top" role="banner">
         <h2 className="top-title">Teknolojik Yemekler</h2>
         <p className="subtitle">fırsatı kaçırma</p>
-        <h2 class="main-title">
+        <h2 className="main-title">
           KOD ACIKTIRIR<br />
           PIZZA, DOYURUR
         </h2>
-        <button className="top-button" onClick={onStart}>
+        <button  type="button" className="top-button" onClick={onStart} aria-label="Giriş ekranındaki acıktım butonu">
           ACIKTIM
         </button>
       </header>
 
-      <nav className="nav-categories">
+      <nav className="nav-categories" aria-label="Yemek kategorileri menüsü">
         <ul className="category-list">
           {category.map((item, index) => (
             <li className="category-item" key={index}>
@@ -50,8 +50,8 @@ function HomePage({ onStart }) {
         </ul>
       </nav>
 
-      <main className="for-background">
-        <section className="orta-menu">
+      <main className="for-background" role="main">
+        <section className="orta-menu" aria-label="3 lü popüler menüler">
           <div className="container">
             <div className="sol-kutu">
               <h2 className="ozel-lezzetus">
@@ -60,9 +60,7 @@ function HomePage({ onStart }) {
                 Lezzetus
               </h2>
               <p>Position:Absolute Acı Burger</p>
-              <button className="orta-menu-button" onClick={onStart}>
-                SİPARİŞ VER
-              </button>
+              <button aria-label="Özel Lezzetus sipariş butonu" type="button" className="orta-menu-button" onClick={onStart}>SİPARİŞ VER</button>
             </div>
 
             <div className="sag-kutular">
@@ -72,9 +70,7 @@ function HomePage({ onStart }) {
                   <br />
                   Burger Menü
                 </h3>
-                <button className="orta-menu-button" onClick={onStart}>
-                  SİPARİŞ VER
-                </button>
+                <button aria-label="Hackathlon sipariş butonu"type="button" className="orta-menu-button" onClick={onStart}>SİPARİŞ VER</button>
               </div>
               <div className="kutu-2">
                 <h3>
@@ -82,15 +78,13 @@ function HomePage({ onStart }) {
                   <br />
                   npm gibi kurye
                 </h3>
-                <button className="orta-menu-button" onClick={onStart}>
-                  SİPARİŞ VER
-                </button>
+                <button aria-label="NPM sipariş butonu"type="button" className="orta-menu-button" onClick={onStart}>SİPARİŞ VER</button>
               </div>
             </div>
           </div>
         </section>
 
-        <section className="ara-yazi">
+        <section className="ara-yazi" aria-label="Filtre ve popüler menüler arasındaki sloganlar">
           <p className="subtitle2">en çok paketlenen menüler</p>
           <h2 className="alt-h2">
             <span className="responsive-line">Acıktıran</span>
@@ -99,7 +93,7 @@ function HomePage({ onStart }) {
           </h2>
         </section>
 
-        <div className="filter-buttons">
+        <div className="filter-buttons" aria-label="Kullanıcının isteğine göre filtrelenen bölüm">
           {filterCategories.map((item) => (
             <button
               key={item.key}
@@ -115,9 +109,11 @@ function HomePage({ onStart }) {
           ))}
         </div>
 
-        <div className="menu-container">
+        <div className="menu-container" aria-label="Filtrelenmiş menüler">
           <div className="menu-item">
-            <img
+            <img style={{
+              height:"325px"
+            }}
               src="/assets/iteration-2-images/pictures/food-1.png"
               alt="Terminal Pizza"
             />
