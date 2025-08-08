@@ -3,17 +3,12 @@ import "./OrderForm.css"
 import { Form, FormGroup, Label, Input, Button } from 'reactstrap';
 import { toast } from "react-toastify";
 import Footer from "./Footer";
-import Checkbox from "@mui/material/Checkbox";
-import { orange} from "@mui/material/colors";
-import { FormControlLabel, Typography } from "@mui/material";
 
 
 
 
 
 function OrderForm({ submitOrder,goHome }) {
-
-const label = { inputProps: { 'aria-label': 'Custom checkbox' } };
   const [seciliMalzemeler, setSeciliMalzemeler] = useState([]);
   const [name, setName] = useState('');
   const [adet, setAdet] = useState(1);
@@ -185,63 +180,22 @@ const label = { inputProps: { 'aria-label': 'Custom checkbox' } };
 
          
           {/* Ek Malzemeler */}
-          <FormGroup className="ek-malzeme"> 
-  <Typography
-    variant="h6"
-    fontWeight="bold"
-    sx={{ marginBottom: "20px",
-      fontFamily:"Barlow",
-     }}
-  >
-    Ek Malzemeler
-  </Typography>
-
-  <Typography
-    variant="body2"
-    color="gray"
-    sx={{ marginBottom: "30px" }} 
-  >
-    En fazla 10 malzeme seçebilirsiniz. 5₺
-  </Typography>
-
-  <div className="checkbox-container">
-    {malzemeler.map((malzeme, index) => (
-      <FormControlLabel
-       
-        key={index}
-        sx={{ marginBottom: "12px" }} 
-        control={
-          <Checkbox
-           data-cy={`checkbox-${malzeme.toLowerCase().replace(/ /g, "-")}`}
-            value={malzeme}
-            checked={seciliMalzemeler.includes(malzeme)}
-            onChange={handleCheckBoxChange}
-            sx={{
-              transform: 'scale(1.7)',
-
-              '& .MuiSvgIcon-root': {
-                color: '#faf7f2',
-                backgroundColor: '#faf7f2',
-                borderRadius: '4px',
-                marginRight: '15px',
-                alignItems: 'center',
-                fontFamily:"Barlow",
-              },
-
-              '&.Mui-checked .MuiSvgIcon-root': {
-                color: 'white',
-                backgroundColor: orange[600],
-                borderRadius: '4px',
-                
-              },
-            }}
-          />
-        }
-        label={malzeme}
+        <div style={{paddingTop:"30px",
+          paddingBottom:"15px"}}className="checkbox-container">
+   {malzemeler.map((malzeme, index) => (
+    <label className="container-checkbox" key={index}>
+      <input
+        data-cy={`checkbox-${malzeme.toLowerCase().replace(/ /g, "-")}`}
+        type="checkbox"
+        value={malzeme}
+        checked={seciliMalzemeler.includes(malzeme)}
+        onChange={handleCheckBoxChange}
       />
-    ))}
-  </div>
-</FormGroup>
+      <span className="checkmark"></span>
+      <span className="label-text">{malzeme}</span>
+    </label>
+  ))}
+      </div>
            
           <FormGroup className="mobil-isim-aciklama">
             <Label  style={{fontFamily:"Barlow"}}htmlFor="isimInput">İsim</Label>
@@ -273,7 +227,7 @@ const label = { inputProps: { 'aria-label': 'Custom checkbox' } };
                }}
             />
           </FormGroup>
-
+   
           <div style={{ width: "100%", borderBottom: "1px solid #ccc", margin: "40px auto" }}></div>
 
           <div className="order-controls-container">

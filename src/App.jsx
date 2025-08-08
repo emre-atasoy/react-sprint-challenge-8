@@ -14,6 +14,11 @@ function App() {
     setPage("order");
   };
 
+   const goHome = () => {
+    setPage("home");
+  }
+
+
   const submitOrder = async (data) => {
   try {
     const response = await axios.post("https://reqres.in/api/pizza", data, {
@@ -29,10 +34,6 @@ function App() {
     toast.error("Sipariş gönderilemedi. Lütfen internet bağlantınızı kontrol edin.");
   }
 };
-
-  const goHome = () => {
-    setPage("home");
-  }
 
   
   return (
